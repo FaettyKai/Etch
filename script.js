@@ -1,46 +1,20 @@
-container = document.querySelector("#container")
-container.setAttribute("style", "width: 28em; height: 32em")
+i = 0
 
-button = " "
-canvas = () => {
-    for(let i = 0; i <= 255; i++) {
-        button = document.createElement("button")
-        button.setAttribute("style", "width: 2em; height: 2em;")
-        button.classList.add("content")
-        button.textContent = ""
-        container.appendChild(button)
-    }
-    color()
+container = document.querySelector("#container")
+
+canvas = []
+
+for(var i;i<255; i++) {
+    button = document.createElement("button")
+    button.setAttribute("style", "height: 2em; width: 2em;")
+    canvas.push(button)
+    container.appendChild(button)
 }
 
-canvas()
+color = (button) => {
+	button.addEventListener("mousedown", () => {
+  	button.setAttribute("style", "background: blue;")
+  })
+}
 
-color = () => {
-        button.addEventListener("mousedown", () => {
-            button.setAttribute("style", "background: blue; width: 2em; height: 2em;")
-        })
-} 
-
-/*
-const container = document.querySelector("#container");
-
-        function createButton() {
-            const button = document.createElement("button");
-            button.classList.add("content");
-
-            button.addEventListener("mousedown", () => {
-                button.style.background = "blue";
-            });
-
-            return button;
-        }
-
-        function createCanvas() {
-            for (let i = 0; i < 256; i++) {
-                const button = createButton();
-                container.appendChild(button);
-            }
-        }
-
-        createCanvas();
-*/
+canvas.forEach(color)
